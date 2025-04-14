@@ -17,8 +17,10 @@ function MusicGen() {
     "Dreamy ambient soundscape with soft piano"
   ]);
   
-  
-  
+  // Replace this URL with the ngrok URL from your Colab output
+
+  const NGROK_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     if (audioElement) {
       audioElement.volume = muted ? 0 : volume;
@@ -34,7 +36,7 @@ function MusicGen() {
     
     try {
       // POST request to your Flask backend
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/generate`, {
+      const response = await fetch(`${NGROK_URL}/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
